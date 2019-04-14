@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Text Collaborative Extensions</title>
+
+  <link rel="stylesheet" href="example.css"/>
+  <link rel="stylesheet" href="/dist/css/html-text-collab-ext.css"/>
+
+  <script src="data.js"></script>
+  <script src="/dist/umd/html-text-collab-ext.js"></script>
+  <script src="/libs/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <h1>Html Text Collaborative Extensions</h1>
+  </div>
+  <div class="description">
+    This example demonstrates the HTML Text Collaborative Extensions library which transforms a normal Html Text Area
+    into a collaborative text editor able to render remote cursors and selections of other users. It also allows the
+    Text Area to be non-disruptively modified by inserting and removing text without disturbing the cursor or selection
+    of the local user. A tooltip is provided and can be flashed based on the actions of the other users.
+  </div>
+  <div class="content">
+    <div class="col">
+      <label for="textarea1">User 1</label>
+      <textarea id="textarea1"></textarea>
+    </div>
+    <div class="col">
+      <label for="textarea2">User 2</label>
+      <textarea id="textarea2"></textarea>
+    </div>
+  </div>
+</div>
+<script src="example.js"></script>
+</body>
+</html>
