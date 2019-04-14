@@ -10,7 +10,7 @@ import {
 } from './frogutils';
 import { get, isEqual, last, forEach, isUndefined, filter, find } from 'lodash';
 import uuid from 'cuid';
-import QuillCursors from '@houshuang/quill-cursors';
+import QuillCursors from 'quill-cursors';
 
 import { LiViewTypes, formats } from './constants';
 import LearningItemBlot from './LearningItemBlot';
@@ -37,6 +37,19 @@ LearningItemBlot.className = 'ql-learning-item';
 Quill.register('formats/learning-item', LearningItemBlot);
 Quill.register('modules/clipboard', CustomQuillClipboard, true);
 Quill.register('modules/cursors', QuillCursors);
+
+const debounce = (func, wait) => {
+  var timeout;
+  return function(...args) {
+    var context = this;
+    var later = function() {
+      timeout = null;
+      func.apply(context, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
 
 const Delta = Quill.import('delta');
 const Parchment = Quill.import('parchment');
@@ -94,7 +107,6 @@ class ReactiveRichText extends Component<
   opListener = (op: Object[], source: string) => {
     if (source === this.quillRef) {
       // Ignore if the changes are from our own editor
-      console.log('ignore source', source, this.quillRef);
       return;
     }
     if (this.quillRef) {
@@ -265,7 +277,7 @@ class ReactiveRichText extends Component<
     if (!id) {
       return;
     }
-    const color = pickColor(id);
+    const color = this.props.getColor(id) || pickColor(id);
     const css = `.ql-authorship .ql-author-${id} { color: ${color}; }
     .ql-authorship div.ql-author-${id} {background-color: ${color}}`;
 
@@ -279,18 +291,11 @@ class ReactiveRichText extends Component<
         .getElementsByTagName('head')[0]
         .appendChild(authorStyleElements[id]);
     }
-
-    // Hide author colors if there are no other collaborating users
-    if (Object.keys(authorStyleElements).length > 1 && !this.props.readOnly) {
-      this.turnAuthorshipOn();
-    } else {
-      this.turnAuthorshipOff();
-    }
   }
 
   componentDidMount() {
+    const editor = this.quillRef && this.quillRef.getEditor();
     if (!this.props.shorten) {
-      const editor = this.quillRef && this.quillRef.getEditor();
       if (editor) {
         // LI blots in existing content always trigger a change with source 'user'
         // on editor load. This causes the editor to duplicate the LIs in some
@@ -320,6 +325,66 @@ class ReactiveRichText extends Component<
         this.initializeAuthorship();
       }
     }
+    const cursors = editor.getModule('cursors');
+
+    const updateCursor = range =>
+      this.props.dataFn.doc.submitPresence({
+        p: this.state.path,
+        t: 'rich-text',
+        s: {
+          u: this.props.userId,
+          c: 0,
+          s: [[range.index, range.index + range.length]]
+        }
+      });
+
+    const debouncedUpdate = debounce(updateCursor, 500);
+
+    editor.on('selection-change', (range, oldRange, source) => {
+      if (range) {
+        if (source === 'user') {
+          updateCursor(range);
+        } else {
+          debouncedUpdate(range);
+        }
+      }
+    });
+
+    this.props.dataFn.doc.on('presence', (srcList, submitted) => {
+      srcList.forEach(src => {
+        if (!this.props.dataFn.doc.presence[src]) return;
+
+        const presence = this.props.dataFn.doc.presence[src];
+        if (!isEqual(presence.p, this.state.path)) {
+          cursors.removeCursor(presence.s.u);
+          return;
+        }
+
+        if (presence.s.u) {
+          var userid = presence.s.u;
+          if (
+            userid !== this.props.userId &&
+            presence.s.s &&
+            presence.s.s.length > 0
+          ) {
+            // TODO: Can QuillCursors support multiple selections?
+            var sel = presence.s.s[0];
+
+            // Use Math.abs because the sharedb presence type
+            // supports reverse selections, but I don't think
+            // Quill Cursors does.
+            var len = Math.abs(sel[1] - sel[0]);
+            var min = Math.min(sel[0], sel[1]);
+
+            cursors.createCursor(userid, userid, this.props.getColor(userid));
+            cursors.moveCursor(userid, { index: min, length: len });
+            if (submitted) {
+              cursors.flashCursor(userid);
+            }
+          }
+        }
+      });
+    });
   }
 
   componentWillReceiveProps(nextProps: ReactivePropsT) {
@@ -626,6 +691,7 @@ class ReactiveRichText extends Component<
           formats={formats}
           style={{ height: '90%' }}
           modules={{
+            cursors: true,
             toolbar: get(props, 'readOnly')
               ? null
               : {
@@ -645,7 +711,6 @@ class ReactiveRichText extends Component<
     );
   }
 }
-
 window.q = Quill;
 export { reactiveRichTextDataFn };
 export default ReactiveRichText;

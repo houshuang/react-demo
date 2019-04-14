@@ -3,34 +3,9 @@ import { connection } from './connection';
 import { useReactive } from '@chilifrog/reactive-tools';
 import ReactiveRichText from './ReactiveRichText/main';
 import { generateUID, uidColor } from './getUser';
-import Stringify from  'json-stable-stringify'
-import { cloneDeep } from 'lodash'
+import { Presence } from './Presence'
 
 const uid = generateUID();
-
-export const Presence = ({ dataFn, id }) => {
-  const [presence, setPresence] = React.useState({});
-  React.useEffect(
-    () => {
-      const update = e => setPresence(cloneDeep(dataFn.doc.presence));
-      dataFn.doc.on('presence', update);
-
-      return () => dataFn.doc.removeListener('presence', update);
-    },
-    [id]
-  );
-
-  
-  return (
-    <div>
-      {Object.values(presence).map(x => (
-        <li key={x.u}>
-          <b>{x.u}</b> - {Stringify(x)}
-        </li>
-      ))}
-    </div>
-  );
-};
 
 export const Display = () => {
   const [data, dataFn, timeout] = useReactive(
@@ -48,9 +23,19 @@ export const Display = () => {
   return (
     <div>
       <div style={{ backgroundColor: uidColor(uid) }}>{uid}</div>
-      <ReactiveRichText dataFn={dataFn} path="text" userId="hi" />
+      <ReactiveRichText
+        dataFn={dataFn}
+        path="text"
+        userId={uid}
+        getColor={uidColor}
+      />
       <hr />
-      <ReactiveRichText dataFn={dataFn} path="text2" userId="hi" />
+      <ReactiveRichText
+        dataFn={dataFn}
+        path="text2"
+        userId={uid}
+        getColor={uidColor}
+      />
       <hr />
       <Presence dataFn={dataFn} id="stian5" />
     </div>

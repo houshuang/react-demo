@@ -949,10 +949,8 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@chilifrog/reactive-tools@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@chilifrog/reactive-tools/-/reactive-tools-1.0.0.tgz#ed16c73985fa7c556597e83ad610f573725159c9"
-  integrity sha512-Kk2vRChF1lYJcVNwOTWY9hwRur0Kf0bhmSYL0q7pdjEZEQ0nvAr1WDhT7YAbvLN8k1BAXGJ7+iXT4CFpGrxYMw==
+"@chilifrog/reactive-tools@file:.yalc/@chilifrog/reactive-tools":
+  version "1.0.1-844c75a2"
   dependencies:
     react "^16.8.6"
 
@@ -7225,7 +7223,7 @@ ot-json0@^1.0.1:
   integrity sha512-wf5fci7GGpMYRDnbbdIFQymvhsbFACMHtxjivQo5KgvAHlxekyfJ9aPsRr6YfFQthQkk4bmsl5yESrZwC/oMYQ==
 
 "ot-json0@file:.yalc/ot-json0":
-  version "1.1.0-d490e3f4"
+  version "1.1.0-1cd78964"
 
 p-defer@^1.0.0:
   version "1.0.0"
@@ -8374,9 +8372,10 @@ querystringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
 
-quill-cursors@houshuang/quill-cursors:
+quill-cursors@quill-cursors:
   version "2.1.0"
-  resolved "https://codeload.github.com/houshuang/quill-cursors/tar.gz/649b89c51b7cf3c86e618a8f82ea78d30d66960c"
+  resolved "https://registry.yarnpkg.com/quill-cursors/-/quill-cursors-2.1.0.tgz#02c9fd5a03ddefb4e70d2b6cc8d84818bd59d962"
+  integrity sha512-IMNQ6rKh4FCW5nYefisozuP+wQnsHU3fZkevUltumpL8yhXND1nRJLeT6iMSmowvjZoJJoHWJRaGFHNVvrZC0g==
 
 quill-delta@^3.2.0, quill-delta@^3.6.2:
   version "3.6.3"
@@ -8564,6 +8563,11 @@ react@^16.3.0, react@^16.8.6:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.6"
+
+"reactive-tools@file:.yalc/reactive-tools":
+  version "1.0.0-14f78c94"
+  dependencies:
+    react "^16.8.6"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -8950,7 +8954,7 @@ rgba-regex@^1.0.0:
   integrity sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=
 
 "rich-text@file:.yalc/rich-text":
-  version "3.1.0-2ecc7043"
+  version "3.1.0-d6c51692"
   dependencies:
     quill-delta "^3.2.0"
 

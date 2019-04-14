@@ -5,7 +5,7 @@ export const names = [
   'Ole',
   'Niels',
   'Gregor',
-  'Chen Li',
+  'ChenLi',
   'Ananda',
   'Rupert',
   'Ben'
