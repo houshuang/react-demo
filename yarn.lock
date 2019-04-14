@@ -266,11 +266,19 @@
     to-fast-properties "^2.0.0"
 
 "@chilifrog/reactive-tools@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@chilifrog/reactive-tools/-/reactive-tools-1.0.3.tgz#a2b7f5f56900bf96fa2ee3e1395ca5bc4c737640"
-  integrity sha512-9bISvOQITT1ge6FYT3/kDzYELGevcr8kdnMi8RZp59hQy//cHOIx5TLMoHSF5WUv0N38Ud1NBBOW4PqqEiBOjg==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@chilifrog/reactive-tools/-/reactive-tools-1.0.6.tgz#99b3db768d6a64e8bc7782b88b2c5313845808dd"
+  integrity sha512-7mlQrIWhywJrecW1Zu1YB98NLs35SK2ZONqJbXoZH1W/LUAO4/UV61hWrdtV0jnZ40hDT/1NijFzYFCmyGws7A==
   dependencies:
     react "^16.8.6"
+    sharedb-string-binding "^1.0.0"
+
+"@chilifrog/sharedb-mongo@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@chilifrog/sharedb-mongo/-/sharedb-mongo-3.0.0.tgz#59649bdd5c3771a938773b060fbc4cad1e53607e"
+  integrity sha512-c8xfKEta/Aib1bVTQGwQELtdPQS6rmEi8Gj2+yF3igCfuy9FIwvx8BwCFjiJcfNigbGMYXm7Bptd+nA5QgjYRg==
+  dependencies:
+    async "^2.6.1"
 
 "@chilifrog/sharedb@^3.0.1":
   version "3.0.1"
@@ -373,13 +381,6 @@
   integrity sha512-UeQ9/PN/3C4YpOzKgcDJLDq1ccTn56F/q1gLRtIEitG++LsvYSZdTAF8RpXU7XsJpEcQ1ev/DviHq+TV7s6KoQ==
   dependencies:
     quill-delta "^3.2.0"
-
-"@teamwork/sharedb-mongo@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@teamwork/sharedb-mongo/-/sharedb-mongo-3.0.0.tgz#7032ae14ee1b400a931a99469faf1965432ce616"
-  integrity sha512-h05ZyxeKdvrQbIZ7cO8fM4m8aFcmG5kqVrefbFoQCq7QfZuZu3ERzNijl8/MwbiBhFXAwm7taWkADqZguu00Mw==
-  dependencies:
-    async "^2.6.1"
 
 "@teamwork/websocket-json-stream@^1.0.0":
   version "1.1.1"
@@ -1136,6 +1137,13 @@ setimmediate@^1.0.5:
   resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
   integrity sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=
 
+sharedb-string-binding@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sharedb-string-binding/-/sharedb-string-binding-1.0.0.tgz#0770e36cdcf2c608844dddf8f0a38be42564b102"
+  integrity sha1-B3DjbNzyxgiETd348KOL5CVksQI=
+  dependencies:
+    text-diff-binding "^1.0.0"
+
 source-map@^0.5.0:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
@@ -1164,6 +1172,11 @@ symbol-observable@1.2.0, symbol-observable@^1.0.4, symbol-observable@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
+
+text-diff-binding@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/text-diff-binding/-/text-diff-binding-1.1.0.tgz#3e0adfcb7aee19c16e3afd3e7b7d897998e42a27"
+  integrity sha1-Pgrfy3ruGcFuOv0+e32JeZjkKic=
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

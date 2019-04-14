@@ -2,7 +2,7 @@ var http = require('http');
 var ShareDB = require('@chilifrog/sharedb');
 var WebSocket = require('ws');
 var WebSocketJSONStream = require('@teamwork/websocket-json-stream');
-var ShareDBMongo = require('@teamwork/sharedb-mongo');
+var ShareDBMongo = require('@chilifrog/sharedb-mongo');
 var richText = require('@minervaproject/rich-text');
 var json0 = require('@minervaproject/ot-json0');
 
