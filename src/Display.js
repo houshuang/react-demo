@@ -22,6 +22,7 @@ export const Display = () => {
   }
   return (
     <div>
+      <h1>Demo of Quill with cursors</h1>
       <div style={{ backgroundColor: uidColor(uid) }}>{uid}</div>
       <ReactiveRichText
         dataFn={dataFn}

@@ -266,9 +266,9 @@
     to-fast-properties "^2.0.0"
 
 "@chilifrog/reactive-tools@^1.0.0":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@chilifrog/reactive-tools/-/reactive-tools-1.0.6.tgz#99b3db768d6a64e8bc7782b88b2c5313845808dd"
-  integrity sha512-7mlQrIWhywJrecW1Zu1YB98NLs35SK2ZONqJbXoZH1W/LUAO4/UV61hWrdtV0jnZ40hDT/1NijFzYFCmyGws7A==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@chilifrog/reactive-tools/-/reactive-tools-1.0.7.tgz#9bebbf0dabac02ca747c40e35ece8b60c6bd8722"
+  integrity sha512-dnCJjap+Xx5Dza4har4xqMEM7X65YuqL2OJd1eZHiFk+YM6bPYkAA+Y1CstENAAg938mAYlM6ex33gYJkhuaJw==
   dependencies:
     react "^16.8.6"
     sharedb-string-binding "^1.0.0"

@@ -352,7 +352,7 @@ class ReactiveRichText extends Component<
 
     this.props.dataFn.doc.on('presence', (srcList, submitted) => {
       srcList.forEach(src => {
-        if (!this.props.dataFn.doc.presence[src]) return;
+        if (!this.props.dataFn.doc.presence[src]?.p) return;
 
         const presence = this.props.dataFn.doc.presence[src];
         if (!isEqual(presence.p, this.state.path)) {
