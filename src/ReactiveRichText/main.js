@@ -10,6 +10,7 @@ import {
 } from './frogutils';
 import { get, isEqual, last, forEach, isUndefined, filter, find } from 'lodash';
 import uuid from 'cuid';
+import QuillCursors from '@houshuang/quill-cursors';
 
 import { LiViewTypes, formats } from './constants';
 import LearningItemBlot from './LearningItemBlot';
@@ -34,8 +35,8 @@ LearningItemBlot.blotName = 'learning-item';
 LearningItemBlot.tagName = 'div';
 LearningItemBlot.className = 'ql-learning-item';
 Quill.register('formats/learning-item', LearningItemBlot);
-
 Quill.register('modules/clipboard', CustomQuillClipboard, true);
+Quill.register('modules/cursors', QuillCursors);
 
 const Delta = Quill.import('delta');
 const Parchment = Quill.import('parchment');
@@ -93,6 +94,7 @@ class ReactiveRichText extends Component<
   opListener = (op: Object[], source: string) => {
     if (source === this.quillRef) {
       // Ignore if the changes are from our own editor
+      console.log('ignore source', source, this.quillRef);
       return;
     }
     if (this.quillRef) {
@@ -603,7 +605,9 @@ class ReactiveRichText extends Component<
           }
         }}
         onMouseLeave={() => {
-          this.props.dataFn.listore.setOverCB(null);
+          if (this.props.dataFn.listore?.setOverCB) {
+            this.props.dataFn.listore.setOverCB(null);
+          }
         }}
       >
         {!get(props, 'readOnly') && (
