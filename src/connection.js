@@ -1,9 +1,9 @@
 // @flow
 
-import richText from 'rich-text';
-import json0 from 'ot-json0';
+import richText from '@minervaproject/rich-text';
+import json0 from '@minervaproject/ot-json0';
 import ReconnectingWebSocket from 'reconnectingwebsocket';
-import sharedbClient from '@teamwork/sharedb/lib/client';
+import sharedbClient from '@chilifrog/sharedb/lib/client';
 
 let socket;
 let _connection;

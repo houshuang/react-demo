@@ -1,10 +1,10 @@
 var http = require('http');
-var ShareDB = require('@teamwork/sharedb');
+var ShareDB = require('@chilifrog/sharedb');
 var WebSocket = require('ws');
 var WebSocketJSONStream = require('@teamwork/websocket-json-stream');
 var ShareDBMongo = require('@teamwork/sharedb-mongo');
-var richText = require('rich-text');
-var json0 = require('ot-json0');
+var richText = require('@minervaproject/rich-text');
+var json0 = require('@minervaproject/ot-json0');
 
 json0.type.registerSubtype(richText.type);
 ShareDB.types.register(json0.type);

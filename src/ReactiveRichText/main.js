@@ -3,15 +3,15 @@ import '@houshuang/react-quill/dist/quill.snow.css';
 
 import React, { Component } from 'react';
 import ReactQuill, { Quill } from '@houshuang/react-quill';
+import { get, isEqual, last, forEach, isUndefined, filter, find } from 'lodash';
+import uuid from 'cuid';
+import QuillCursors from '@minervaproject/quill-cursors';
+
 import {
   HighlightSearchText,
   highlightTargetRichText,
   cloneDeep
 } from './frogutils';
-import { get, isEqual, last, forEach, isUndefined, filter, find } from 'lodash';
-import uuid from 'cuid';
-import QuillCursors from 'quill-cursors';
-
 import { LiViewTypes, formats } from './constants';
 import LearningItemBlot from './LearningItemBlot';
 import CustomQuillClipboard from './CustomQuillClipboard';
