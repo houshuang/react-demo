@@ -1,10 +1,11 @@
 # Simple demo of shared cursors, presence, Quill etc
 
+It expects a Mongo database running on the default port (27017). 
+
 ## To run (after installing parcel globally)
 ```
 yarn install
-node server.js &
-parcel src/index.html
+node server.js & parcel src/index.html
 ```
 
 Custom packages: 
